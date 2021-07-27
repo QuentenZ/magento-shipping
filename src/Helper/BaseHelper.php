@@ -143,7 +143,7 @@ class BaseHelper extends AbstractHelper
     public function getIsHoliday($carrier)
     {
         $date = $this->getTimezoneDate('m-d');
-        $holidays = $this->getConfiguration(sprintf("carriers/%s/holidays", $carrier));
+        $holidays = $this->getConfiguration(sprintf("carriers/%s/holidays", $carrier)) ?? '[]';
         $holidays = $this->serializer->unserialize($holidays);
 
         foreach ($holidays as $holiday) {
